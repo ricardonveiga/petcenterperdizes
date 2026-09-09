@@ -24,7 +24,7 @@
   --ink:#28242a;
   --white:#ffffff;
 
-  --font-serif:'Playfair Display', serif;
+  --font-serif:'Fraunces', serif;
   --font-sans:'Inter', sans-serif;
   --font-script:'Caveat', cursive;
 
@@ -165,14 +165,7 @@ p{line-height:1.7;color:var(--gray-800);margin:0 0 1em;}
 .hero-title{color:#fff;font-size:clamp(2.2rem,5vw,3.75rem);margin-bottom:22px;text-shadow:0 6px 30px rgba(0,0,0,.25);}
 .hero-title .script{font-size:1.05em;}
 .hero-sub{color:rgba(255,255,255,.88);font-size:1.15rem;max-width:620px;margin-bottom:34px;}
-.hero-actions{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:34px;}
-.hero-rating{
-  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
-  color:#fff;font-size:.95rem;background:rgba(255,255,255,.1);
-  border:1px solid rgba(255,255,255,.3);padding:.6em 1.1em;border-radius:999px;width:fit-content;backdrop-filter:blur(6px);
-}
-.hero-rating .stars{color:var(--orange-400);letter-spacing:1px;}
-.hero-rating .dot{opacity:.6;}
+.hero-actions{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:6px;}
 
 .scroll-cue{
   position:absolute;left:50%;bottom:28px;transform:translateX(-50%);
@@ -321,7 +314,14 @@ p{line-height:1.7;color:var(--gray-800);margin:0 0 1em;}
 .contact-item p{margin:0;}
 .contact-item a{color:var(--purple-600);font-weight:600;}
 .contact-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px;}
-.contact-map{border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg);min-height:380px;border:1px solid var(--gray-200);}
+.contact-map-wrap{position:relative;height:100%;}
+.map-label{
+  position:absolute;top:20px;left:20px;z-index:2;
+  background:#fff;color:var(--purple-700);font-weight:700;font-size:.85rem;
+  padding:.6em 1.1em;border-radius:999px;box-shadow:var(--shadow-md);
+  border:1px solid var(--blue-200);
+}
+.contact-map{border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg);min-height:380px;height:100%;border:1px solid var(--gray-200);}
 
 /* ---------- Footer ---------- */
 .site-footer{background:var(--purple-900);color:var(--blue-100);padding:56px 0 0;}

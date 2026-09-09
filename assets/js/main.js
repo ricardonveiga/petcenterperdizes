@@ -32,15 +32,41 @@
     });
   }
 
-  /* Hero video crossfade (dog <-> cat in the garden) */
+  /* Hero video crossfade (dog <-> cat in the garden) — plays non-stop */
   var heroVideos = document.querySelectorAll(".hero-video");
-  if (heroVideos.length > 1) {
-    var activeIndex = 0;
-    setInterval(function(){
-      heroVideos[activeIndex].classList.remove("is-active");
-      activeIndex = (activeIndex + 1) % heroVideos.length;
-      heroVideos[activeIndex].classList.add("is-active");
-    }, 7000);
+  if (heroVideos.length) {
+    var keepPlaying = function(video){
+      var p = video.play();
+      if (p && typeof p.catch === "function") p.catch(function(){});
+    };
+
+    heroVideos.forEach(function(video){
+      keepPlaying(video);
+      // Belt-and-suspenders looping: some browsers can drop the native
+      // `loop` attribute (e.g. after a seek/visibility change), so force
+      // a restart whenever a video reports it ended.
+      video.addEventListener("ended", function(){
+        video.currentTime = 0;
+        keepPlaying(video);
+      });
+      video.addEventListener("pause", function(){
+        if (!document.hidden) keepPlaying(video);
+      });
+    });
+
+    document.addEventListener("visibilitychange", function(){
+      if (!document.hidden) heroVideos.forEach(keepPlaying);
+    });
+
+    if (heroVideos.length > 1) {
+      var activeIndex = 0;
+      setInterval(function(){
+        heroVideos[activeIndex].classList.remove("is-active");
+        activeIndex = (activeIndex + 1) % heroVideos.length;
+        heroVideos[activeIndex].classList.add("is-active");
+        keepPlaying(heroVideos[activeIndex]);
+      }, 7000);
+    }
   }
 
   /* Scroll reveal */
