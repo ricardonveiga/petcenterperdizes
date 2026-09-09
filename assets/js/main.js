@@ -84,37 +84,4 @@
   } else {
     revealEls.forEach(function(el){ el.classList.add("in-view"); });
   }
-
-  /* Animated counters (trust strip) */
-  var counters = document.querySelectorAll("[data-count]");
-  var animateCounter = function(el){
-    var target = parseFloat(el.getAttribute("data-count"));
-    var suffix = el.getAttribute("data-suffix") || "";
-    var isDecimal = target % 1 !== 0;
-    var duration = 1400;
-    var start = null;
-
-    var step = function(ts){
-      if (!start) start = ts;
-      var progress = Math.min((ts - start) / duration, 1);
-      var value = target * progress;
-      el.textContent = (isDecimal ? value.toFixed(1) : Math.round(value)) + suffix;
-      if (progress < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  };
-
-  if ("IntersectionObserver" in window && counters.length) {
-    var counterIO = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if (entry.isIntersecting) {
-          animateCounter(entry.target);
-          counterIO.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.6 });
-    counters.forEach(function(el){ counterIO.observe(el); });
-  } else {
-    counters.forEach(animateCounter);
-  }
 })();
