@@ -156,7 +156,7 @@ p{line-height:1.7;color:var(--gray-800);margin:0 0 1em;}
     linear-gradient(180deg, rgba(58,33,72,.55) 0%, rgba(58,33,72,.62) 45%, rgba(30,17,38,.86) 100%),
     linear-gradient(90deg, rgba(20,12,28,.55) 0%, rgba(20,12,28,.1) 55%);
 }
-.hero-content{padding-top:var(--header-h);padding-bottom:80px;max-width:800px;}
+.hero .hero-content{padding-top:var(--header-h);padding-bottom:80px;max-width:800px;}
 .hero-title{color:#fff;font-size:clamp(2.2rem,5vw,3.75rem);margin-bottom:22px;text-shadow:0 6px 30px rgba(0,0,0,.25);}
 .hero-title .script{font-size:1.05em;}
 .hero-sub{color:rgba(255,255,255,.88);font-size:1.15rem;max-width:620px;margin-bottom:52px;}
@@ -296,11 +296,15 @@ p{line-height:1.7;color:var(--gray-800);margin:0 0 1em;}
 
 /* ---------- Footer ---------- */
 .site-footer{background:var(--purple-900);color:var(--blue-100);padding:64px 0 0;}
-.footer-inner{display:flex;justify-content:flex-start;align-items:center;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.12);}
+/* Scoped under .site-footer so this always wins over the later mobile
+   `.container{padding:...}` rule, which shares the same specificity as a
+   bare `.footer-inner`/`.footer-bottom` selector and was silently
+   zeroing out this vertical spacing on small screens. */
+.site-footer .footer-inner{display:flex;justify-content:flex-start;align-items:center;padding-top:0;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.12);}
 .footer-brand{gap:14px;}
 .footer-brand .brand-name{color:#fff;}
 .footer-brand .brand-tag{color:rgba(255,255,255,.55);}
-.footer-bottom{
+.site-footer .footer-bottom{
   display:flex;justify-content:flex-start;text-align:left;flex-wrap:wrap;
   padding:30px 0 34px;font-size:.7rem;color:rgba(255,255,255,.6);
 }
@@ -369,7 +373,7 @@ p{line-height:1.7;color:var(--gray-800);margin:0 0 1em;}
   .section{padding:76px 0;}
   .brand-tag{display:none;}
   .brand-logo{width:56px;height:56px;}
-  .hero-content{padding-top:20px;}
+  .hero .hero-content{padding-top:20px;}
   .hero-title{font-size:clamp(2rem,8vw,2.6rem);}
   .hero-sub{font-size:1.02rem;}
   .hero-actions{flex-direction:column;align-items:stretch;}
@@ -384,7 +388,7 @@ p{line-height:1.7;color:var(--gray-800);margin:0 0 1em;}
   .cta-inner .btn{width:100%;}
   .contact-actions{flex-direction:column;}
   .contact-actions .btn{width:100%;}
-  .footer-bottom{font-size:.66rem;}
+  .site-footer .footer-bottom{font-size:.66rem;}
   .whatsapp-float{width:56px;height:56px;right:16px;bottom:16px;}
   .whatsapp-float .icon-wa{width:28px;height:28px;}
 }
