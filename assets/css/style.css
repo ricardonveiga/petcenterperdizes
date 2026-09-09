@@ -118,7 +118,6 @@ p{line-height:1.7;color:var(--gray-800);margin:0 0 1em;}
 .brand-text{display:flex;flex-direction:column;line-height:1.15;}
 .brand-name{font-family:var(--font-serif);font-weight:800;font-size:1.15rem;color:var(--purple-700);}
 .brand-name em{font-style:normal;color:var(--orange-500);}
-.brand-tag{font-size:.68rem;letter-spacing:.06em;color:var(--gray-600);text-transform:uppercase;}
 
 .main-nav{display:flex;align-items:center;gap:26px;}
 .nav-link{font-weight:600;font-size:.95rem;color:var(--gray-800);position:relative;padding:4px 0;}
@@ -303,7 +302,6 @@ p{line-height:1.7;color:var(--gray-800);margin:0 0 1em;}
 .site-footer .footer-inner{display:flex;justify-content:flex-start;align-items:center;padding-top:0;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.12);}
 .footer-brand{gap:14px;}
 .footer-brand .brand-name{color:#fff;}
-.footer-brand .brand-tag{color:rgba(255,255,255,.55);}
 .site-footer .footer-bottom{
   display:flex;justify-content:flex-start;text-align:left;flex-wrap:wrap;
   padding:22px 0 26px;font-size:.7rem;color:rgba(255,255,255,.6);
@@ -371,7 +369,6 @@ p{line-height:1.7;color:var(--gray-800);margin:0 0 1em;}
   :root{--header-h:74px;}
   .container{padding:0 20px;}
   .section{padding:76px 0;}
-  .brand-tag{display:none;}
   .brand-logo{width:56px;height:56px;}
   .hero .hero-content{padding-top:20px;}
   .hero-title{font-size:clamp(2rem,8vw,2.6rem);}
